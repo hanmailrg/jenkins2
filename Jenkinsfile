@@ -67,7 +67,7 @@ pipeline {
 			steps {
 				sshagent(credentials:['SERVER_SSH_KEY']){
 					sh """
-					   ssh -o StrictHostKeyChecking=no ${SERVER_USER}@{SERVER_IP} << 'EOF'
+					  'ssh -o StrictHostKeyChecking=no' ${SERVER_USER}@{SERVER_IP} << 'EOF'
 					   pkill -f 'java -jar' || true
                        nohup java -jar ~/app/jenkins-0.0.1-SNAPSHOT.jar > log.txt 2>&1 &
 EOF
