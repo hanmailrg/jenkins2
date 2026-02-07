@@ -67,9 +67,9 @@ pipeline {
 			steps {
 				sshagent(credentials:['SERVER_SSH_KEY']){
 					sh """
-					    ssh -o StrictHostKeyChecking=no ubuntu@3.39.6.173'
-					       pkill -f 'java -jar' || true
-					       nohup java -jar ${APP_DIR}/${JAR_NAME} > log.txt 2>&1 &
+ssh -o StrictHostKeyChecking=no ubuntu@3.39.6.173'
+pkill -f 'java -jar' || true
+nohup java -jar ${APP_DIR}/${JAR_NAME} > log.txt 2>&1 &
 '
 					   """ 
 				}
