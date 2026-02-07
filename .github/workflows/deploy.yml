@@ -45,7 +45,7 @@ jobs:
       run: |
         ssh-keyscan -H ed25519 3.39.6.173 >> ~/.ssh/known_hosts
 
-    #- name: 기존프로세스 종료 
+    #- name: 기존프로세스 종료
     #  run: |
     #    kill -9 $(ps -ef | grep devops | grep -v grep | head -n 1 | awk '{print $2}') || true
 
