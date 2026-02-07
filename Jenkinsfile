@@ -68,7 +68,7 @@ pipeline {
 					    ssh -o StrictHostKeyChecking=no ${SERVER_USER}@{SERVER_IP} '
 					       pkill -f 'java -jar' || true
 					       nohup java -jar ${APP_DIR}/${JAR_NAME} > log.txt 2>&1 &
-					       '
+'
 					   """ 
 				}
 			}
