@@ -61,6 +61,8 @@ pipeline {
 		}
 		// 실행 명령 
 		
+		
+		
 		stage('Run Application') {
 			steps {
 				sshagent(credentials:['SERVER_SSH_KEY']){
