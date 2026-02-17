@@ -31,7 +31,7 @@ pipeline {
 			}
 		}
 		
-		// gradle build => war파일을 다시 생성 
+		// gradle build => jar파일을 다시 생성 
 		stage('Gradle Permission') {
 			steps {
 				sh '''
@@ -49,7 +49,7 @@ pipeline {
 			}
 		}
 		
-		// war파일 전송 = rsync / scp 
+		// jar파일 전송 = rsync / scp 
 		stage('Deploy = rsync') {
 			steps {
 				sshagent(credentials:['SERVER_SSH_KEY']){
@@ -67,7 +67,7 @@ pipeline {
 			steps {
 				sshagent(credentials:['SERVER_SSH_KEY']){
 					sh """
-                       ssh -o StrictHostKeyChecking=no ubuntu@3.39.6.173 << 'EOF'
+                       ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} << 'EOF'
                        pkill -f "java -jar" || true
                        nohup java -jar ~/app/jenkins-0.0.1-SNAPSHOT.jar > log.txt 2>&1 &
 EOF
